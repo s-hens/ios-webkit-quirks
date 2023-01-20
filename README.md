@@ -1,12 +1,12 @@
 # iOS-Friendly Web Dev
 
-###### About this project
+### About this project
 
 iOS-compatible web development presents many unique challenges.
 
 This is a community-maintained repository for keeping track of iOS/Safari/WebKit quirks and potential workarounds for web developers.
 
-###### How to contribute
+### How to contribute
 
 This repository is a community effort. Pull requests and suggestions for improvements are welcome.
 
@@ -47,11 +47,11 @@ function example() {
 }
 ```
 
-## Phone numbers automatically render as links
+## Phone numbers render as links
 
-**Reported date:** 20th Jan 2023
-**Description:** Safari on iOS automatically transforms phone numbers into links.
-**Possible solution:** Use a meta tag to stop the transformation.
+- **Reported date:** 20th Jan 2023
+- **Description:** Safari on iOS automatically transforms phone numbers into links.
+- **Possible solution:** Use a meta tag to stop the transformation.
 ```HTML
 <meta name="format-detection" content="telephone=no"/>
 ```
