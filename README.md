@@ -15,7 +15,7 @@ Please submit a pull request to:
 - Add to or clarify an existing quirk
 - Remove incorrect or outdated information
 
-# Quirks
+# HTML/CSS Quirks
 
 ## Font size affects button padding
 
@@ -27,6 +27,17 @@ button {
     padding: 0;
 }
 ```
+
+## Phone numbers render as links
+
+- **Reported date:** 20th Jan 2023
+- **Description:** Safari on iOS automatically transforms phone numbers into links.
+- **Possible solution:** Use a meta tag to stop the transformation.
+```HTML
+<meta name="format-detection" content="telephone=no"/>
+```
+
+# JavaScript Quirks
 
 ## Window:resize event triggers on scroll
 
@@ -45,13 +56,4 @@ function example() {
         return;
     }
 }
-```
-
-## Phone numbers render as links
-
-- **Reported date:** 20th Jan 2023
-- **Description:** Safari on iOS automatically transforms phone numbers into links.
-- **Possible solution:** Use a meta tag to stop the transformation.
-```HTML
-<meta name="format-detection" content="telephone=no"/>
 ```
