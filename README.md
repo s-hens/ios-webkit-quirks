@@ -57,3 +57,13 @@ function example() {
     }
 }
 ```
+
+# Webkit Quirks
+
+## .ogg audio files are not supported
+
+- **Reported date:** 1st Feb 2023
+- **Description:** Safari does not support the .ogg filetype.
+- **Possible solutions:**
+  - Use a different audio filetype such as .mp3 or .mp4.
+  - Use a [ogv.js](https://github.com/brion/ogv.js/), a JavaScript library which "creates a drop-in replacement for the HTML5 video and audio tags which can be used for basic playback of Ogg Theora and Vorbis or WebM media on browsers that don't support Ogg or WebM natively".
