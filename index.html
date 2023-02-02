@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS & Webkit Quirks</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="./style.css">
+    <!--JS-->
+    <script src="./javascript.js" defer></script>
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!--Highlight.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/atom-one-light.min.css" integrity="sha512-o5v54Kh5PH0dgnf9ei0L+vMRsbm5fvIvnR/XkrZZjN4mqdaeH7PW66tumBoQVIaKNVrLCZiBEfHzRY4JJSMK/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<!--QUIRK TEMPLATE
+
+<div class="quirk">
+    <h2>TITLE HERE</h2>
+
+    <h3>Description:</h3>
+    DESCRIPTION HERE
+
+    <h3>Solutions:</h3>
+    <ul>
+        <li>SOLUTION 1 HERE
+<pre><code>SOLUTION 1 CODE HERE</code></pre>
+        </li>
+        <li>SOLUTION 2 HERE
+<pre><code>SOLUTION 2 CODE HERE</code></pre>
+        </li>
+    </ul>
+
+    <h3>Updated:</h3>
+    DATE HERE
+
+    <h3>Keywords:</h3>
+    LIST ALL THAT APPLY: HTML, CSS, JS, AUDIOVISUAL
+</div>
+
+-->
+<div id="left">
+    <h1>iOS & Webkit Quirks</h1>
+    <p>Webkit-based browsers are... quirky. Add small screens and iOS to the mix, and you've got trouble.</p>
+    <p>This is my list of iOS/Safari/WebKit quirks and potential workarounds for web developers who want to make mobile-compatible sites.</p>
+    <p>This is not an exhaustive list. I add topics as I learn. Contributions are welcome on GitHub.</p>
+    Created by <a href="https://github.com/s-hens">Steph Henson</a>.
+</div>
+
+<div id="right">
+
+    <div class="quirk">
+        <h2>Font size affects button padding</h2>
+    
+        <h3>Description:</h3>
+        In Safari on iOS, the padding-left and padding-right properties of buttons are affected by the button's font size. If you don't specify these values, Safari on iOS will render your button with unexpected padding.
+    
+        <h3>Solutions:</h3>
+        <ul>
+            <li>Explicitly define padding for all button elements.
+<pre><code>button {
+    padding: 0;
+}</code></pre>
+            </li>
+        </ul>
+        
+        <h3>Updated:</h3>
+        1 Feb 2023
+
+        <h3>Keywords:</h3>
+        HTML, CSS
+    </div>
+
+    <div class="quirk">
+        <h2>Phone numbers render as links</h2>
+    
+        <h3>Description:</h3>
+        Safari on iOS automatically transforms phone numbers into links.
+    
+        <h3>Solutions:</h3>
+        <ul>
+            <li>Use a meta tag to stop the transformation.
+<pre><code>&lt;meta name="format-detection" content="telephone=no"/&gt;</code></pre>
+            </li>
+        </ul>
+    
+        <h3>Updated:</h3>
+        1 Feb 2023
+
+        <h3>Keywords:</h3>
+        HTML
+    </div>
+
+    <div class="quirk">
+        <h2>Ogg audio files don't work</h2>
+    
+        <h3>Description:</h3>
+        Safari on iOS does not support .ogg or .ogv filetypes.
+
+        <h3>Solutions:</h3>
+        <ul>
+            <li>Use a different audio filetype that is supported on iOS, such as .mp3 or .aac.</li>
+            <li>Use <a href="https://github.com/brion/ogv.js/">ogv.js</a>, a media decoder and player which can be used for basic playback of Ogg Theora/Vorbis media on browsers that don't support Ogg natively.</li>
+        </ul>
+    
+        <h3>Updated:</h3>
+        1 Feb 2023
+
+        <h3>Keywords:</h3>
+        Audiovisual
+    </div>
+
+    <div class="quirk">
+        <h2>Window:resize event triggers on scroll</h2>
+    
+        <h3>Description:</h3>
+        Scrolling a page in Safari on iOS triggers the window:resize event.
+    
+        <h3>Solutions:</h3>
+        <ul>
+            <li>Get the window's width and/or height at the start of your JS. Then, for your function which is triggered by the "resize" event listener, add an if statement to check if the window has truly been resized or just scrolled.
+<pre><code>let startingWidth = window.innerWidth;
+
+window.addEventListener("resize", example);
+        
+function example() {
+    if (startingWidth != window.innerWidth) {
+        console.log("It has been resized!");
+    } else {
+        return;
+    }
+}</code></pre>
+            </li>
+        </ul>
+    
+        <h3>Updated:</h3>
+        1 Feb 2023
+
+        <h3>Keywords:</h3>
+        JS
+    </div>
+
+    <div class="quirk">
+        <h2>100vh overflows the visible area</h2>
+    
+        <h3>Description:</h3>
+        In Safari on iOS, the value of 100vh is computed including parts of the viewport that are sometimes hidden by the browser interface. When the browser interface is visible, elements with a height of 100vh are taller than the actual viewport height.
+    
+        <h3>Solutions:</h3>
+        <ul>
+            <li>Include -webkit-fill-available in your CSS.
+<pre><code>body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+      
+html {
+    height: -webkit-fill-available;
+}</code></pre>
+            </li>
+            <li>Use the <a href="https://github.com/postcss/postcss-100vh-fix">PostCSS 100vh fix plugin</a>.</li>
+            <li>Use the <a href="https://github.com/mvasin/react-div-100vh">React Div100vh component</a>.</li>
+            <li>Solutions by Susie Kim: Use CSS media queries, or target innerHeight with JS. Read full article <a href="https://medium.com/@susiekim9/how-to-compensate-for-the-ios-viewport-unit-bug-46e78d54af0d">here</a>.
+            </li>
+            <li>Solution by Maciej Trzciński: Target appHeight with JS. Read full article <a href="https://medium.com/quick-code/100vh-problem-with-ios-safari-92ab23c852a8">here</a>.</li>
+        </ul>
+    
+        <h3>Updated:</h3>
+        1 Feb 2023
+
+        <h3>Keywords:</h3>
+        HTML, CSS, JS
+    </div>
+
+</div>
+
+</body>
+</html>
