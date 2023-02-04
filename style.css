@@ -12,7 +12,7 @@ body {
 }
 
 a {
-    color: #0969da;
+    color: #0969DA;
 }
 
 a:hover {
@@ -71,4 +71,13 @@ li:last-child {
 pre {
     margin: 5px 0;
     font-size: 14px;
+}
+
+@media screen and (max-width: 800px) {
+
+body {
+    width: min-content;
+    grid-template-columns: 1fr;
+}
+
 }
