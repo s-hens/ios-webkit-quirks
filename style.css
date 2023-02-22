@@ -13,9 +13,6 @@ body {
 
 a {
     color: #0969DA;
-}
-
-a:hover {
     text-decoration: underline;
 }
 
@@ -73,11 +70,14 @@ pre {
     font-size: 14px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 500px) {
 
-body {
-    width: min-content;
+body, #right {
     grid-template-columns: 1fr;
+}
+
+.quirk {
+    width: calc(100vw - 80px);
 }
 
 }
