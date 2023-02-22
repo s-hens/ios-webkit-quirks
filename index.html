@@ -14,7 +14,7 @@
     <!--Highlight.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/atom-one-light.min.css" integrity="sha512-o5v54Kh5PH0dgnf9ei0L+vMRsbm5fvIvnR/XkrZZjN4mqdaeH7PW66tumBoQVIaKNVrLCZiBEfHzRY4JJSMK/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script>hljs.highlightAll();</script>
 </head>
 <body>
 <!--QUIRK TEMPLATE
@@ -39,19 +39,37 @@
     DATE HERE
 
     <h3>Keywords:</h3>
-    LIST ALL THAT APPLY: HTML, CSS, JS, AUDIOVISUAL
+    LIST ALL THAT APPLY. FOR EXAMPLE: HTML, CSS, JS, UX, A11Y, Audiovisual
 </div>
 
 -->
 <div id="left">
     <h1>iOS & Webkit Quirks</h1>
-    <p>Webkit-based browsers are... quirky. Add small screens and iOS to the mix, and you've got trouble.</p>
-    <p>This is my list of iOS/Safari/WebKit quirks and potential workarounds for web developers who want to make mobile-compatible sites.</p>
+    <p>Webkit-based browsers are... quirky. So is iOS. So are small screens.</p>
+    <p>This is my list of iOS/Safari/WebKit quirks and potential workarounds for web developers who want to make great mobile-compatible sites.</p>
     <p>This is not an exhaustive list. I add topics as I learn. Contributions are welcome on <a href="https://github.com/s-hens/ios-webkit-quirks">GitHub</a>.</p>
     Created by <a href="https://github.com/s-hens">Steph Henson</a>.
 </div>
 
 <div id="right">
+
+    <div class="quirk">
+        <h2>Automatic zoom on form elements</h2>
+    
+        <h3>Description:</h3>
+        If the font size of a form input element is less than 1rem or 16px, Safari on iOS will automatically zoom in on the input when it is selected. It will zoom in until the font size is visually equivalent to 1rem or 16px.
+    
+        <h3>Solutions:</h3>
+        <ul>
+            <li>Make the font size of your form input elements at least 1rem or 16px.</li>
+        </ul>
+    
+        <h3>Updated:</h3>
+        22 Feb 2023
+    
+        <h3>Keywords:</h3>
+        HTML, CSS, A11Y
+    </div>
 
     <div class="quirk">
         <h2>Font size affects button padding</h2>
