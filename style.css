@@ -16,6 +16,10 @@ a {
     text-decoration: underline;
 }
 
+a:hover {
+    border-bottom: 1px solid #0969DA;
+}
+
 h1 {
     font-size: 32px;
     font-weight: 700;
