@@ -1,6 +1,6 @@
 # iOS & Webkit Quirks
 
-_Webkit-based browsers are... quirky. So is iOS. So are small mobile screens._
+### _Webkit-based browsers are... quirky. So is iOS. So are small mobile screens._
 
 - This is my list of iOS/Safari/WebKit quirks and potential workarounds for web developers who want to make great mobile-compatible sites.
 
